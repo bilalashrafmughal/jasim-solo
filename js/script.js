@@ -28,7 +28,7 @@ $("#team-members").owlCarousel({
 });
 /*
 ============================================
-                 Progress Bar 
+                Progress Bar                
 ============================================
 */
 $(function() {
@@ -47,12 +47,51 @@ $(function() {
 });
 /*
 ============================================
-                 Responsive Tabs 
+                 Responsive Tabs
 ============================================
 */
 $(function()
 {
 $("#services-tabs").responsiveTabs({
 Animation:'slide'
-}); 
+});
+});
+/*
+============================================
+                 Portfolio
+============================================
+*/
+$(window).on('load',function()
+ {
+//initialize isotope
+$("#isotope-container").isotope({
+});
+//filters item on button clicks
+$("#isotope-filters").on('click','button', function(){
+    //get filter value
+    var filtervalue =$(this).attr('data-filter'); 
+    //filter portfolio
+    $("#isotope-container").isotope({
+        filter:filtervalue
+    }); 
+    //avtive button
+    $("#isotope-filters").find('.active').removeClass('active');
+    $(this).addClass('active');    
+});     
+});
+/*
+============================================
+                 Magnifier
+============================================
+*/
+$(function()
+{
+    $("#Portfolio-wrapper").magnificPopup({
+        delegate: 'a', 
+        type: 'image',
+        gallery:
+        {
+            enabled:true
+        }
+      });
 });
