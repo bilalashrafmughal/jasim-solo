@@ -722,6 +722,14 @@ ul.social-list li:nth-child(3) a:hover {
     overflow: hidden;
     position: relative;
 }
+.portfolio-item:hover .portfolio-item-overlay{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
 /* filters css*/
 #isotope-filters
 {
@@ -819,14 +827,19 @@ ul.social-list li:nth-child(3) a:hover {
     -ms-transition: all 0.5s;
     -o-transition: all 0.5s;
 }
-.portfolio-item-details span
+.portfolio-item-details .straps
 {
-    font-display: inline-block;
-    border-top: 1px solid #fff;
-    border-bottom: 1px solid #fff;
+  
+    border-top: 1px solid #f4c613;
+    border-bottom: 1px solid #f4c613;
     height: 6px;
     width: 30px;
     margin: 11px auto 5px auto; 
+    /* display: flex;
+    width: 200px;
+    height: 200px;
+    background-color: red; */
+
 }
 .portfolio-item-details p
 {
