@@ -104,7 +104,6 @@ $(function () {
         nav: true,
         dots: false,
         navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>']
-
     });
 });
 /*
@@ -134,5 +133,76 @@ $(function () {
         dots: false,
         navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>']
 
+    });
+});
+/*
+============================================
+                 google-map 
+============================================
+*/
+$(window).on('load', function () {
+    //map-vairables
+    var addressString = '230 Broadway, NY, NewYork 10007, USA';
+    var myLating = {
+        lat: 40.712685,
+        lng: -74.005920
+    };
+    //render-map
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 11,
+        center: myLating
+    });
+    //2. Add Marker
+    var marker = new google.maps.Marker({
+        position: myLating,
+        map: map,
+        title: "click to see"
+
+    });
+    //2. Add infowindow
+    var infowindow = new google.maps.infowindow({
+        content: addressString
+    });
+    //show inforwindow when user clicks marker
+    marker.addListener('click', function () {
+        infowindow.open(map, marker);
+    });
+});
+/*
+============================================
+                 google-map 
+============================================
+*/
+/*show and hide navigation */
+$(function () {
+    //show/hide nav on page load
+    showHideNave();
+    $(window).scroll(function () {
+        //show/hide nav on window's scroll 
+    });
+
+    function showHideNav() {
+        if ($(window).scrollTop() > 50) {
+            //show white nav
+            $("nav").addClass("white-nav-top");
+            //show dark logo
+            $(".navbar-brand img").attr("src", "img/logo/logo-dark.png");
+        } else {
+            //hide white nav
+            $("nav").removeClass("white-nav-top");
+            //show logo
+            $(".navbar-brand img").attr("src", "images/logo/logo-dark.png");
+        }
+    }
+});
+/* smooth Scrolling */
+$(function () {
+    $("a.smooth-scroll").click(function (event) {
+        event.preventDefault();
+        //get section ID like #about, #services, #work, #team and #etc
+        var section_id = $(this).attr("href");
+        $("html, body").animate({
+            scrollTop: $(section_id).offset().top - 64
+        }, 1250, "easeInOutExpo");
     });
 });
